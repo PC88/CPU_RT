@@ -1,4 +1,5 @@
 #include "iostream"
+#include "Vendor/glm/glm.hpp"
 // initial blank commit
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
@@ -8,5 +9,7 @@
 
 int main()
 {
+	glm::vec3 testV = glm::vec3(1.0f, 1.0f, 1.0f);
+
 	return 0;
 }
