@@ -4,4 +4,5 @@ A CPU side Ray-Tracer, constructed from much of Peter Shirley's Ray Tracing in o
 
 To then be merged with ideas from Kevin Suffern's Ray Tracing from the Ground Up: http://www.raytracegroundup.com/
 
-![initial image](images/image.ppm)
+![initial image ppm format](images/image.ppm)
+![jpg version](images/image.ppm)
