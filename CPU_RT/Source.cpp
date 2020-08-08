@@ -41,8 +41,12 @@ int main()
 		std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
 		for (int i = 0; i < image_width; ++i) 
 		{
-			color pixel_color(double(i) / (image_width - 1), double(j) / (image_height - 1), 0.25);
-			write_color(std::cout, pixel_color);
+			//color pixel_color(double(i) / (image_width - 1), double(j) / (image_height - 1), 0.25);
+			//write_color(std::cout, pixel_color);
+			auto u = double(i) / (image_width - 1);
+			auto v = double(j) / (image_height - 1);
+			ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
+			color pixel_color = ray_color(r);
 		}
 	}
 

@@ -18,7 +18,5 @@ public:
 public:
 	point3 orig;
 	vec3 dir;
-
-	~ray();
 };
 
