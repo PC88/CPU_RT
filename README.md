@@ -6,5 +6,5 @@ To then be merged with ideas from Kevin Suffern's Ray Tracing from the Ground Up
 
 ![initial image ppm format](images/image1.ppm)
 
-
+jpg version:
 ![jpg-version](images/image1.jpg)
