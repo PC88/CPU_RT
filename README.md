@@ -21,3 +21,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image3.jpg)
+
+![surface normals on a sphere ray trace image ppm format](images/image4.ppm)
+
+jpg version:
+
+![jpg-version](images/image4.jpg)
