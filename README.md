@@ -15,3 +15,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image2.jpg)
+
+![first sphere ray trace image ppm format](images/image3.ppm)
+
+jpg version:
+
+![jpg-version](images/image3.jpg)
