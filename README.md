@@ -9,3 +9,9 @@ To then be merged with ideas from Kevin Suffern's Ray Tracing from the Ground Up
 jpg version:
 
 ![jpg-version](images/image1.jpg)
+
+![first ray trace image ppm format](images/image2.ppm)
+
+jpg version:
+
+![jpg-version](images/image2.jpg)
