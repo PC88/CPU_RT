@@ -32,7 +32,10 @@
     <ClInclude Include="RT1W\sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hittable_list.h">
+    <ClInclude Include="RT1W\hittable_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RT1W\rtweekend.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

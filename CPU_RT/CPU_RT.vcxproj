@@ -118,11 +118,12 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hittable_list.h" />
+    <ClInclude Include="RT1W\hittable_list.h" />
     <ClInclude Include="RT1W\hittable.h" />
     <ClInclude Include="RT1W\ray.h" />
     <ClInclude Include="RT1W\vec3.h" />
     <ClInclude Include="RT1W\sphere.h" />
+    <ClInclude Include="RT1W\rtweekend.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
