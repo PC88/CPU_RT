@@ -2,6 +2,7 @@
 #include "RT1W/vec3.h"
 #include "Vendor/glm/glm.hpp"
 #include "RT1W/ray.h"
+#include "RT1W/hittable.h"
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
 /// merging my own understanding, with that of Peter Shirley`s RT in one weekend series,
