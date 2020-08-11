@@ -121,6 +121,7 @@
     <ClInclude Include="RT1W\hittable.h" />
     <ClInclude Include="RT1W\ray.h" />
     <ClInclude Include="RT1W\vec3.h" />
+    <ClInclude Include="RT1W\sphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
