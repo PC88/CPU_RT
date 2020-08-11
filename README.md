@@ -27,3 +27,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image4.jpg)
+
+![Resulting render of normals-colored sphere with ground ppm format](images/image5.ppm)
+
+jpg version:
+
+![jpg-version](images/image5.jpg)
