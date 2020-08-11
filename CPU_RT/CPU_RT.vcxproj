@@ -118,6 +118,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="hittable_list.h" />
     <ClInclude Include="RT1W\hittable.h" />
     <ClInclude Include="RT1W\ray.h" />
     <ClInclude Include="RT1W\vec3.h" />
