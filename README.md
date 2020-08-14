@@ -57,3 +57,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image9.jpg)
+
+![Old Hemisphereical Diffuse Render ppm format](images/image10.ppm)
+
+jpg version:
+
+![jpg-version](images/image10.jpg)
