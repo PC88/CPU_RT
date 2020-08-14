@@ -51,3 +51,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image8.jpg)
+
+![Proper Lambertion Diffuse Render ppm format](images/image9.ppm)
+
+jpg version:
+
+![jpg-version](images/image9.jpg)
