@@ -117,12 +117,3 @@ inline vec3 unit_vector(vec3 v)
 // Type aliases for vec3
 using point3 = vec3;   // 3D point
 using color = vec3;    // RGB 
-
-// global for now - might be changed later its simply for speed
-void write_color(std::ostream &out, color pixel_color)
-{
-	// Write the translated [0,255] value of each color component.
-	out << static_cast<int>(255.999 * pixel_color.x()) << ' '
-		<< static_cast<int>(255.999 * pixel_color.y()) << ' '
-		<< static_cast<int>(255.999 * pixel_color.z()) << '\n';
-}

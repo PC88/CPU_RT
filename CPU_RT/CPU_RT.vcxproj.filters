@@ -38,5 +38,11 @@
     <ClInclude Include="RT1W\rtweekend.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RT1W\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RT1W\colour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
