@@ -1,5 +1,4 @@
 #pragma once
-//#include "RT1W/rtweekend.h"
 #include <cmath>
 #include <iostream>
 
@@ -9,6 +8,7 @@ using std::sqrt;
 // the definition of the function can be linked, but the declaration cannot - hence the second definition here - PC
 double random_double();
 double random_double(double min, double max);
+
 
 class vec3
 {
@@ -142,6 +142,9 @@ vec3 random_in_unit_sphere()
 
 vec3 random_unit_vector() 
 {
+	// this is not optimal definition, but it will do for now
+	const double pi = 3.1415926535897932385;
+
 	auto a = random_double(0, 2 * pi);
 	auto z = random_double(-1, 1);
 	auto r = sqrt(1 - z * z);
