@@ -39,3 +39,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image6.jpg)
+
+![Diffuse Render ppm format](images/image7.ppm)
+
+jpg version:
+
+![jpg-version](images/image7.jpg)
