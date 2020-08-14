@@ -54,7 +54,10 @@ color ray_color(const ray& r, const hittable& world, int depth)
 	if (world.hit(r, 0.001, infinity, rec)) 
 	{
 		// the replacement of "random_in_unit_sphere()" with "random_unit_vector()" makes the lighting simulate correct lambertian lighting
-		point3 target = rec.p + rec.normal + random_unit_vector();
+		//point3 target = rec.p + rec.normal + random_unit_vector();
+
+		// the above commented code is the optimal code, this is just an example of how the first ray tracing papers did it below
+		point3 target = rec.p + random_in_hemisphere(rec.normal);
 		return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth - 1);
 	}
 
