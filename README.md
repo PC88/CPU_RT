@@ -33,3 +33,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image5.jpg)
+
+![Anti-Aliasing added ppm format](images/image6.ppm)
+
+jpg version:
+
+![jpg-version](images/image6.jpg)
