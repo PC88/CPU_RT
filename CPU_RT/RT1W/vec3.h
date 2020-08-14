@@ -1,10 +1,14 @@
 #pragma once
-
+//#include "RT1W/rtweekend.h"
 #include <cmath>
 #include <iostream>
 
 using std::sqrt;
 
+// include commented out above due to errors, the linkage of globals is global, meaning:
+// the definition of the function can be linked, but the declaration cannot - hence the second definition here - PC
+double random_double();
+double random_double(double min, double max);
 
 class vec3
 {
@@ -51,6 +55,26 @@ public:
 	double length_squared() const 
 	{
 		return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
+	}
+
+	inline static vec3 random()
+	{
+		return vec3(random_double(), random_double(), random_double());
+	}
+
+	inline static vec3 random(double min, double max)
+	{
+		return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
+	}
+
+	vec3 random_in_unit_sphere()
+	{
+		while (true)
+		{
+			auto p = random(-1, 1);
+			if (p.length_squared() >= 1) continue;
+			return p;
+		}
 	}
 
 public:

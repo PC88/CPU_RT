@@ -5,7 +5,7 @@
 #include "RT1W/hittable.h"
 #include "RT1W/sphere.h"
 #include "RT1W/hittable_list.h"
-#include "RT1W/rtweekend.h"
+//#include "RT1W/rtweekend.h"
 #include "RT1W/camera.h"
 #include "RT1W/colour.h"
 
