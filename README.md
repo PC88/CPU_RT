@@ -45,3 +45,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image7.jpg)
+
+![Gamma corrected Diffuse Render ppm format](images/image8.ppm)
+
+jpg version:
+
+![jpg-version](images/image8.jpg)
