@@ -67,15 +67,6 @@ public:
 		return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
 	}
 
-	vec3 random_in_unit_sphere()
-	{
-		while (true)
-		{
-			auto p = random(-1, 1);
-			if (p.length_squared() >= 1) continue;
-			return p;
-		}
-	}
 
 public:
 	double e[3];
@@ -136,6 +127,17 @@ inline vec3 cross(const vec3 &u, const vec3 &v)
 inline vec3 unit_vector(vec3 v)
 {
 	return v / v.length();
+}
+
+
+vec3 random_in_unit_sphere()
+{
+	while (true)
+	{
+		auto p = vec3::random(-1, 1);
+		if (p.length_squared() >= 1) continue;
+		return p;
+	}
 }
 
 // Type aliases for vec3
