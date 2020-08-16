@@ -160,6 +160,12 @@ vec3 random_in_hemisphere(const vec3& normal)
 		return -in_unit_sphere;
 }
 
+// "The reflected ray direction in red is just v+2b. In our design"
+vec3 reflect(const vec3& v, const vec3& n) 
+{
+	return v - 2 * dot(v, n)*n;
+}
+
 // Type aliases for vec3
 using point3 = vec3;   // 3D point
 using color = vec3;    // RGB 

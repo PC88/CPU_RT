@@ -7,6 +7,7 @@
 #include "RT1W/hittable_list.h"
 #include "RT1W/camera.h"
 #include "RT1W/colour.h"
+#include "RT1W/material.h"
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
 /// merging my own understanding, with that of Peter Shirley`s RT in one weekend series,
@@ -56,8 +57,17 @@ color ray_color(const ray& r, const hittable& world, int depth)
 		//point3 target = rec.p + rec.normal + random_unit_vector();
 
 		// the above commented code is the optimal code, this is just an example of how the first ray tracing papers did it below
-		point3 target = rec.p + random_in_hemisphere(rec.normal);
-		return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth - 1);
+		//point3 target = rec.p + random_in_hemisphere(rec.normal);
+		//return 0.5 * ray_color(ray(rec.p, target - rec.p), world, depth - 1);
+
+
+		ray scattered;
+		color attenuation;
+		if (rec.mat_ptr->scatter(r, rec, attenuation, scattered))
+		{
+			return attenuation * ray_color(scattered, world, depth - 1);
+		}
+		return color(0, 0, 0);
 	}
 
 	vec3 unit_direction = unit_vector(r.direction());

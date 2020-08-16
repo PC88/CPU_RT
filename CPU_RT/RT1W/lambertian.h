@@ -1,6 +1,8 @@
 #pragma once
 #include "RT1W/material.h"
 
+struct hit_record;
+
 class lambertian : public material
 {
 public:

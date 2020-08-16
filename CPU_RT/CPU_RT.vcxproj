@@ -118,6 +118,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RT1W\metal.h" />
     <ClInclude Include="RT1W\lambertian.h" />
     <ClInclude Include="RT1W\material.h" />
     <ClInclude Include="RT1W\colour.h" />

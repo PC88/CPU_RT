@@ -1,5 +1,4 @@
 #pragma once
-//#include "RT1W/vec3.h"
 
 class ray
 {
