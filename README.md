@@ -63,3 +63,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image10.jpg)
+
+![Metal sphere's ppm format](images/image11.ppm)
+
+jpg version:
+
+![jpg-version](images/image11.jpg)
