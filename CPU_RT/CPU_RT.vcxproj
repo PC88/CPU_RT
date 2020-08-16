@@ -118,6 +118,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RT1W\material.h" />
     <ClInclude Include="RT1W\colour.h" />
     <ClInclude Include="RT1W\camera.h" />
     <ClInclude Include="RT1W\hittable_list.h" />
