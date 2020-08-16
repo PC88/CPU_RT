@@ -6,14 +6,17 @@
 #include <memory>
 
 
-// Usings
+// Common Headers
+#include "vec3.h"
+#include "ray.h"
 
+
+// Usings
 using std::shared_ptr;
 using std::make_shared;
 using std::sqrt;
 
 // Constants
-
 const double infinity = std::numeric_limits<double>::infinity();
 const double pi = 3.1415926535897932385;
 
@@ -43,7 +46,3 @@ inline double clamp(double x, double min, double max)
 	return x;
 }
 
-// Common Headers
-
-//#include "ray.h"
-//#include "vec3.h"
