@@ -69,3 +69,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image11.jpg)
+
+![Metal with Fuzzy reflection ppm format](images/image12.ppm)
+
+jpg version:
+
+![jpg-version](images/image12.jpg)
