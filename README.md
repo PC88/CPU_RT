@@ -99,3 +99,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image17.jpg)
+
+![distant camera view point ppm format](images/image18.ppm)
+
+jpg version:
+
+![jpg-version](images/image18.jpg)
