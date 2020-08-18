@@ -93,3 +93,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image16.jpg)
+
+![wide angle camera ppm format](images/image17.ppm)
+
+jpg version:
+
+![jpg-version](images/image17.jpg)
