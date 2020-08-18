@@ -81,3 +81,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image14.jpg)
+
+![Partial refraction glass ppm format](images/image15.ppm)
+
+jpg version:
+
+![jpg-version](images/image15.jpg)
