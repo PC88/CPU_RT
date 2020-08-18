@@ -111,3 +111,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image19.jpg)
+
+![spheres with depth of field ppm format](images/image20.ppm)
+
+jpg version:
+
+![jpg-version](images/image20.jpg)
