@@ -23,7 +23,7 @@ public:
 			scattered = ray(rec.p, reflected);
 			return true;
 		}
-		vec3 unit_direction = unit_vector(r_in.direction());
+
 		vec3 refracted = refract(unit_direction, rec.normal, etai_over_etat);
 		scattered = ray(rec.p, refracted);
 		return true;
