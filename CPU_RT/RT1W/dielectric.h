@@ -23,7 +23,13 @@ public:
 			scattered = ray(rec.p, reflected);
 			return true;
 		}
-
+		double reflect_prob = schlick(cos_theta, etai_over_etat);
+		if (random_double() < reflect_prob)
+		{
+			vec3 reflected = reflect(unit_direction, rec.normal);
+			scattered = ray(rec.p, reflected);
+			return true;
+		}
 		vec3 refracted = refract(unit_direction, rec.normal, etai_over_etat);
 		scattered = ray(rec.p, refracted);
 		return true;
