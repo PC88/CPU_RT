@@ -87,3 +87,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image15.jpg)
+
+![correct hollow glass ppm format](images/image16.ppm)
+
+jpg version:
+
+![jpg-version](images/image16.jpg)
