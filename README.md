@@ -75,3 +75,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image12.jpg)
+
+![Total refraction glass ppm format](images/image14.ppm)
+
+jpg version:
+
+![jpg-version](images/image14.jpg)
