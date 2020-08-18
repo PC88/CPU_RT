@@ -117,3 +117,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image20.jpg)
+
+![Final Render ppm format](images/image21.ppm)
+
+jpg version:
+
+![jpg-version](images/image21.jpg)
