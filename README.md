@@ -105,3 +105,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image18.jpg)
+
+![zoomed in camera view point ppm format](images/image19.ppm)
+
+jpg version:
+
+![jpg-version](images/image19.jpg)
