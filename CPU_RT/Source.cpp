@@ -140,10 +140,9 @@ int main()
 {
 	// Image
 	
-	const auto aspect_ratio = 3.0 / 2.0;
-	const int image_width = 1200;
-	const int image_height = static_cast<int>(image_width / aspect_ratio);
-	const int samples_per_pixel = 500;
+	auto aspect_ratio = 16.0 / 9.0;
+	int image_width = 400;
+	int samples_per_pixel = 100;
 	const int max_depth = 50;
 
 	// World
@@ -155,9 +154,11 @@ int main()
 	point3 lookat(0, 0, 0);
 	vec3 vup(0, 1, 0);
 	auto dist_to_focus = 10.0;
+	int image_height = static_cast<int>(image_width / aspect_ratio);
 	auto aperture = 0.1;
 
-	camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+
+	camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
 
 	// Render
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
