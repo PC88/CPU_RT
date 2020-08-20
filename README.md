@@ -123,3 +123,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image21.jpg)
+
+![Motion Blur ppm format](images/image22.ppm)
+
+jpg version:
+
+![jpg-version](images/image22.jpg)
