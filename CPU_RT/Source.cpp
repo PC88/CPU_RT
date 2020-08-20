@@ -10,6 +10,7 @@
 #include "RT1W/metal.h"
 #include "RT1W/lambertian.h"
 #include "RT1W/dielectric.h"
+#include "RT1W/moving_sphere.h"
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
 /// merging my own understanding, with that of Peter Shirley`s RT in one weekend series,
@@ -102,6 +103,8 @@ hittable_list random_scene()
 					auto albedo = color::random() * color::random();
 					sphere_material = make_shared<lambertian>(albedo);
 					world.add(make_shared<sphere>(center, 0.2, sphere_material));
+					auto center2 = center + vec3(0, random_double(0, .5), 0);
+					world.add(make_shared<moving_sphere>(center, center2, 0.0, 1.0, 0.2, sphere_material));
 				}
 				else if (choose_mat < 0.95) 
 				{
