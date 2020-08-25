@@ -4,13 +4,13 @@
 class AABB
 {
 public:
-	aabb() {}
-	aabb(const point3& a, const point3& b) { _min = a; _max = b; }
+	AABB() {}
+	AABB(const point3& a, const point3& b) { _min = a; _max = b; }
 
 	point3 min() const { return _min; }
 	point3 max() const { return _max; }
 
-	inline bool aabb::hit(const ray& r, double tmin, double tmax) const 
+	inline bool AABB::hit(const ray& r, double tmin, double tmax) const 
 	{
 		for (int a = 0; a < 3; a++) 
 		{
