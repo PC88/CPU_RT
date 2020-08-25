@@ -118,6 +118,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RT1W\AABB.h" />
     <ClInclude Include="RT1W\moving_sphere.h" />
     <ClInclude Include="RT1W\dielectric.h" />
     <ClInclude Include="RT1W\metal.h" />

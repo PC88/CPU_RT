@@ -59,5 +59,8 @@
     <ClInclude Include="RT1W\moving_sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RT1W\AABB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
