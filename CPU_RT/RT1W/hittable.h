@@ -1,7 +1,6 @@
 #pragma once
 #include "RT1W/AABB.h"
 #include "RT1W/ray.h"
-#include "RT1W/rtweekend.h"
 
 class material;
 
