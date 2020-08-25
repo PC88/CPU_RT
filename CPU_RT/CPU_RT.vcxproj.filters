@@ -62,5 +62,8 @@
     <ClInclude Include="RT1W\AABB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RT1W\bvh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
