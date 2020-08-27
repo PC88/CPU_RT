@@ -20,6 +20,15 @@ public:
 	shared_ptr<material> mat_ptr;
 };
 
+
+void get_sphere_uv(const vec3& p, double& u, double& v)
+{
+	auto phi = atan2(p.z(), p.x());
+	auto theta = asin(p.y());
+	u = 1 - (phi + pi) / (2 * pi);
+	v = (theta + pi / 2) / pi;
+}
+
 bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) const 
 {
 	vec3 oc = r.origin() - center;
@@ -66,12 +75,4 @@ bool sphere::bounding_box(double t0, double t1, AABB& output_box) const
 		center - vec3(radius, radius, radius),
 		center + vec3(radius, radius, radius));
 	return true;
-}
-
-void get_sphere_uv(const vec3& p, double& u, double& v) 
-{
-	auto phi = atan2(p.z(), p.x());
-	auto theta = asin(p.y());
-	u = 1 - (phi + pi) / (2 * pi);
-	v = (theta + pi / 2) / pi;
 }
