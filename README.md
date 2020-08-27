@@ -129,3 +129,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image22.jpg)
+
+![checkered texture render - solid textures ppm format](images/image23.ppm)
+
+jpg version:
+
+![jpg-version](images/image23.jpg)
