@@ -171,3 +171,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image29.jpg)
+
+![turbulance sphere ppm format](images/image30.ppm)
+
+jpg version:
+
+![jpg-version](images/image30.jpg)
