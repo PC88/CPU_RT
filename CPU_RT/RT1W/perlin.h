@@ -20,10 +20,10 @@ class perlin
 public:
 	perlin() 
 	{
-		ranfloat = new double[point_count];
+		ranvec = new vec3[point_count];
 		for (int i = 0; i < point_count; ++i) 
 		{
-			ranfloat[i] = random_double();
+			ranvec[i] = unit_vector(vec3::random(-1, 1));
 		}
 
 		perm_x = perlin_generate_perm();
@@ -33,7 +33,7 @@ public:
 
 	~perlin() 
 	{
-		delete[] ranfloat;
+		delete[] ranvec;
 		delete[] perm_x;
 		delete[] perm_y;
 		delete[] perm_z;
@@ -70,7 +70,7 @@ public:
 
 private:
 	static const int point_count = 256;
-	double* ranfloat;
+	vec3* ranvec;
 	int* perm_x;
 	int* perm_y;
 	int* perm_z;
