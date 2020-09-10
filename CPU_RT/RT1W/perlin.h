@@ -39,6 +39,26 @@ public:
 		delete[] perm_z;
 	}
 
+	inline double perlin_interp(vec3 c[2][2][2], double u, double v, double w) const 
+	{
+		auto uu = u * u*(3 - 2 * u);
+		auto vv = v * v*(3 - 2 * v);
+		auto ww = w * w*(3 - 2 * w);
+		auto accum = 0.0;
+
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < 2; j++)
+				for (int k = 0; k < 2; k++) 
+				{
+					vec3 weight_v(u - i, v - j, w - k);
+					accum += (i*uu + (1 - i)*(1 - uu))
+						* (j*vv + (1 - j)*(1 - vv))
+						* (k*ww + (1 - k)*(1 - ww))
+						* dot(c[i][j][k], weight_v);
+				}
+
+		return accum;
+	}
 
 	double noise(const point3& p) const 
 	{
@@ -54,18 +74,18 @@ public:
 		int i = floor(p.x());
 		int j = floor(p.y());
 		int k = floor(p.z());
-		double c[2][2][2];
+		vec3 c[2][2][2];
 
 		for (int di = 0; di < 2; di++)
 			for (int dj = 0; dj < 2; dj++)
 				for (int dk = 0; dk < 2; dk++)
-					c[di][dj][dk] = ranfloat[
+					c[di][dj][dk] = ranvec[
 						perm_x[(i + di) & 255] ^
 							perm_y[(j + dj) & 255] ^
 							perm_z[(k + dk) & 255]
 					];
 
-		return trilinear_interp(c, u, v, w);
+		return perlin_interp(c, u, v, w);
 	}
 
 private:
