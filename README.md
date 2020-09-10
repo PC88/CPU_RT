@@ -177,3 +177,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image30.jpg)
+
+![marbled sphere ppm format](images/image31.ppm)
+
+jpg version:
+
+![jpg-version](images/image31.jpg)
