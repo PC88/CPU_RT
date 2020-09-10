@@ -153,3 +153,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image26.jpg)
+
+![hermetian smoothed perlin noise sphere ppm format](images/image27.ppm)
+
+jpg version:
+
+![jpg-version](images/image27.jpg)
