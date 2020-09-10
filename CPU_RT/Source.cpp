@@ -178,7 +178,7 @@ int main()
 	auto vfov = 40.0;
 	auto aperture = 0.0;
 
-	switch (0) 
+	switch (3) 
 	{
 	case 1:
 		world = random_scene();
