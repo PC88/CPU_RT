@@ -135,3 +135,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image23.jpg)
+
+![checkered spheres ppm format](images/image24.ppm)
+
+jpg version:
+
+![jpg-version](images/image24.jpg)
