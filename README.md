@@ -165,3 +165,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image28.jpg)
+
+![perlin sphere ppm format](images/image29.ppm)
+
+jpg version:
+
+![jpg-version](images/image29.jpg)
