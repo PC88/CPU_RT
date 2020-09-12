@@ -136,6 +136,7 @@
     <ClInclude Include="RT1W\sphere.h" />
     <ClInclude Include="RT1W\rtweekend.h" />
     <ClInclude Include="RT1W\texture.h" />
+    <ClInclude Include="RT1W\rtw_stb_image.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

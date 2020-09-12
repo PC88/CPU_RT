@@ -203,7 +203,6 @@ int main()
 	}
 
 	// Camera
-
 	vec3 vup(0, 1, 0);
 	auto dist_to_focus = 10.0;
 	int image_height = static_cast<int>(image_width / aspect_ratio);
