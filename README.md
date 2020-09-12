@@ -183,3 +183,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image31.jpg)
+
+![texture mapped sphere ppm format](images/image32.ppm)
+
+jpg version:
+
+![jpg-version](images/image32.jpg)
