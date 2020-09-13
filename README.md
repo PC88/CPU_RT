@@ -195,3 +195,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image33.jpg)
+
+![Cornell box ppm format](images/image34.ppm)
+
+jpg version:
+
+![jpg-version](images/image34.jpg)
