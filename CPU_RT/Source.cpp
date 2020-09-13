@@ -12,6 +12,7 @@
 #include "RT1W/dielectric.h"
 #include "RT1W/moving_sphere.h"
 #include "RT1W/checker_texture.h"
+#include "RT1W/aarect.h"
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
 /// merging my own understanding, with that of Peter Shirley`s RT in one weekend series,
@@ -165,6 +166,20 @@ hittable_list earth()
 	return hittable_list(globe);
 }
 
+hittable_list simple_light() 
+{
+	hittable_list objects;
+
+	auto pertext = make_shared<noise_texture>(4);
+	objects.add(make_shared<sphere>(point3(0, -1000, 0), 1000, make_shared<lambertian>(pertext)));
+	objects.add(make_shared<sphere>(point3(0, 2, 0), 2, make_shared<lambertian>(pertext)));
+
+	auto difflight = make_shared<diffuse_light>(color(4, 4, 4));
+	objects.add(make_shared<xy_rect>(3, 5, 1, 3, -2, difflight));
+
+	return objects;
+}
+
 int main()
 {
 	// Image
@@ -218,7 +233,12 @@ int main()
 		vfov = 20.0;
 		break;
 	case 5:
-		background = color(0.0, 0.0, 0.0);
+		world = simple_light();
+		samples_per_pixel = 400;
+		background = color(0, 0, 0);
+		lookfrom = point3(26, 3, 6);
+		lookat = point3(0, 2, 0);
+		vfov = 20.0;
 		break;
 	}
 
