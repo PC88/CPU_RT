@@ -221,7 +221,7 @@ int main()
 	auto aperture = 0.0;
 	color background(0, 0, 0);
 
-	switch (5) 
+	switch (6) 
 	{
 	case 1:
 		world = random_scene();
