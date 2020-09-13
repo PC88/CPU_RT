@@ -177,6 +177,9 @@ hittable_list simple_light()
 	auto difflight = make_shared<diffuse_light>(color(4, 4, 4));
 	objects.add(make_shared<xy_rect>(3, 5, 1, 3, -2, difflight));
 
+	auto diffspherelight = make_shared<diffuse_light>(color(4, 4, 4));
+	objects.add(make_shared<sphere>(point3(0, 7, 0), 2, diffspherelight));
+
 	return objects;
 }
 
@@ -199,7 +202,7 @@ int main()
 	auto aperture = 0.0;
 	color background(0, 0, 0);
 
-	switch (4) 
+	switch (5) 
 	{
 	case 1:
 		world = random_scene();
