@@ -118,6 +118,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RT1W\box.h" />
     <ClInclude Include="RT1W\aarect.h" />
     <ClInclude Include="RT1W\perlin.h" />
     <ClInclude Include="RT1W\checker_texture.h" />

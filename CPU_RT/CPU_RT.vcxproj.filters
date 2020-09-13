@@ -80,5 +80,8 @@
     <ClInclude Include="RT1W\aarect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RT1W\box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
