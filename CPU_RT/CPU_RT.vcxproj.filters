@@ -77,5 +77,8 @@
     <ClInclude Include="RT1W\rtw_stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RT1W\aarect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

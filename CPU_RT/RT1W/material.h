@@ -1,5 +1,5 @@
 #pragma once
-#include "RT1W/rtweekend.h"
+#include "RT1W/texture.h"
 
 class material
 {
