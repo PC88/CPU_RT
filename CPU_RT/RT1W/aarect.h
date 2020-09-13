@@ -1,4 +1,5 @@
 #pragma once
+// note
 
 class xy_rect : public hittable 
 {
