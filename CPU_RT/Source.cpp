@@ -14,6 +14,7 @@
 #include "RT1W/checker_texture.h"
 #include "RT1W/aarect.h"
 #include "RT1W/box.h"
+#include "RT1W/constant_medium.h"
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
 /// merging my own understanding, with that of Peter Shirley`s RT in one weekend series,
@@ -214,6 +215,36 @@ hittable_list cornell_box()
 	return objects;
 }
 
+hittable_list cornell_smoke() 
+{
+	hittable_list objects;
+
+	auto red = make_shared<lambertian>(color(.65, .05, .05));
+	auto white = make_shared<lambertian>(color(.73, .73, .73));
+	auto green = make_shared<lambertian>(color(.12, .45, .15));
+	auto light = make_shared<diffuse_light>(color(7, 7, 7));
+
+	objects.add(make_shared<yz_rect>(0, 555, 0, 555, 555, green));
+	objects.add(make_shared<yz_rect>(0, 555, 0, 555, 0, red));
+	objects.add(make_shared<xz_rect>(113, 443, 127, 432, 554, light));
+	objects.add(make_shared<xz_rect>(0, 555, 0, 555, 555, white));
+	objects.add(make_shared<xz_rect>(0, 555, 0, 555, 0, white));
+	objects.add(make_shared<xy_rect>(0, 555, 0, 555, 555, white));
+
+	shared_ptr<hittable> box1 = make_shared<box>(point3(0, 0, 0), point3(165, 330, 165), white);
+	box1 = make_shared<rotate_y>(box1, 15);
+	box1 = make_shared<translate>(box1, vec3(265, 0, 295));
+
+	shared_ptr<hittable> box2 = make_shared<box>(point3(0, 0, 0), point3(165, 165, 165), white);
+	box2 = make_shared<rotate_y>(box2, -18);
+	box2 = make_shared<translate>(box2, vec3(130, 0, 65));
+
+	objects.add(make_shared<constant_medium>(box1, 0.01, color(0, 0, 0)));
+	objects.add(make_shared<constant_medium>(box2, 0.01, color(1, 1, 1)));
+
+	return objects;
+}
+
 int main()
 {
 	// Image
@@ -233,7 +264,7 @@ int main()
 	auto aperture = 0.0;
 	color background(0, 0, 0);
 
-	switch (6) 
+	switch (7) 
 	{
 	case 1:
 		world = random_scene();
@@ -280,6 +311,15 @@ int main()
 		image_width = 600;
 		samples_per_pixel = 200;
 		background = color(0, 0, 0);
+		lookfrom = point3(278, 278, -800);
+		lookat = point3(278, 278, 0);
+		vfov = 40.0;
+		break;
+	case 7:
+		world = cornell_smoke();
+		aspect_ratio = 1.0;
+		image_width = 600;
+		samples_per_pixel = 200;
 		lookfrom = point3(278, 278, -800);
 		lookat = point3(278, 278, 0);
 		vfov = 40.0;
