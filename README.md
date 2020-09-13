@@ -189,3 +189,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image32.jpg)
+
+![diffuse lights via emmisve materials ppm format](images/image33.ppm)
+
+jpg version:
+
+![jpg-version](images/image33.jpg)
