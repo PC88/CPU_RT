@@ -213,3 +213,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image36.jpg)
+
+![Standard Cornell box smoke and fog ppm format](images/image37.ppm)
+
+jpg version:
+
+![jpg-version](images/image37.jpg)
