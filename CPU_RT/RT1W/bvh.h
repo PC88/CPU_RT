@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include "RT1W/rtweekend.h"
 #include "RT1W/hittable_list.h"
 
@@ -70,34 +71,37 @@ bool bvh_node::hit(const ray& r, double t_min, double t_max, hit_record& rec) co
 	return hit_left || hit_right;
 }
 
-bvh_node::bvh_node( std::vector<shared_ptr<hittable>>& objects,
-	size_t start, size_t end, double time0, double time1
-) {
+bvh_node::bvh_node(std::vector<shared_ptr<hittable>>& objects,
+	size_t start, size_t end, double time0, double time1)
+{
 	int axis = random_int(0, 2);
-	auto comparator = (axis == 0) ? box_x_compare
+	/*auto comparator = (axis == 0) ? box_x_compare
 		: (axis == 1) ? box_y_compare
-		: box_z_compare;
+		: box_z_compare;*/
+
+	// TODO resolve this
+
 
 	size_t object_span = end - start;
 
-	if (object_span == 1) 
+	if (object_span == 1)
 	{
 		left = right = objects[start];
 	}
-	else if (object_span == 2) 
+	else if (object_span == 2)
 	{
-		if (comparator(objects[start], objects[start + 1])) 
+		if (comparator(objects[start], objects[start + 1]))
 		{
 			left = objects[start];
 			right = objects[start + 1];
 		}
-		else 
+		else
 		{
 			left = objects[start + 1];
 			right = objects[start];
 		}
 	}
-	else 
+	else
 	{
 		std::sort(objects.begin() + start, objects.begin() + end, comparator);
 
@@ -115,3 +119,45 @@ bvh_node::bvh_node( std::vector<shared_ptr<hittable>>& objects,
 
 	box = surrounding_box(box_left, box_right);
 }
+
+//bvh_node::bvh_node(
+//	std::vector<shared_ptr<hittable>>& objects,
+//	size_t start, size_t end, double time0, double time1
+//) {
+//	int axis = random_int(0, 2);
+//	auto comparator = (axis == 0) ? box_x_compare()
+//		: (axis == 1) ? box_y_compare()
+//		: box_z_compare();
+//
+//	size_t object_span = end - start;
+//
+//	if (object_span == 1) {
+//		left = right = objects[start];
+//	}
+//	else if (object_span == 2) {
+//		if (comparator(objects[start], objects[start + 1])) {
+//			left = objects[start];
+//			right = objects[start + 1];
+//		}
+//		else {
+//			left = objects[start + 1];
+//			right = objects[start];
+//		}
+//	}
+//	else {
+//		std::sort(objects.begin() + start, objects.begin() + end, comparator);
+//
+//		auto mid = start + object_span / 2;
+//		left = make_shared<bvh_node>(objects, start, mid, time0, time1);
+//		right = make_shared<bvh_node>(objects, mid, end, time0, time1);
+//	}
+//
+//	AABB box_left, box_right;
+//
+//	if (!left->bounding_box(time0, time1, box_left)
+//		|| !right->bounding_box(time0, time1, box_right)
+//		)
+//		std::cerr << "No bounding box in bvh_node constructor.\n";
+//
+//	box = surrounding_box(box_left, box_right);
+//}
