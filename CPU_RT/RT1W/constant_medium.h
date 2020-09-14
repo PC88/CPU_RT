@@ -69,7 +69,8 @@ bool constant_medium::hit(const ray& r, double t_min, double t_max, hit_record& 
 	rec.t = rec1.t + hit_distance / ray_length;
 	rec.p = r.at(rec.t);
 
-	if (debugging) {
+	if (debugging) 
+	{
 		std::cerr << "hit_distance = " << hit_distance << '\n'
 			<< "rec.t = " << rec.t << '\n'
 			<< "rec.p = " << rec.p << '\n';
