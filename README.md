@@ -219,3 +219,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image37.jpg)
+
+![all effects combined, 10000 Rays per pixel ppm format](images/image38.ppm)
+
+jpg version:
+
+![jpg-version](images/image38.jpg)
