@@ -16,6 +16,7 @@
 #include "RT1W/box.h"
 #include "RT1W/constant_medium.h"
 #include "RT1W/bvh.h"
+#include <iomanip>
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
 /// merging my own understanding, with that of Peter Shirley`s RT in one weekend series,
@@ -317,119 +318,138 @@ int main()
 {
 	// Image
 	
-	auto aspect_ratio = 16.0 / 9.0;
-	int image_width = 400;
-	int samples_per_pixel = 100;
-	const int max_depth = 50;
+	//auto aspect_ratio = 16.0 / 9.0;
+	//int image_width = 400;
+	//int samples_per_pixel = 100;
+	//const int max_depth = 50;
 
-	// World
+	//// World
 
-	hittable_list world;
+	//hittable_list world;
 
-	point3 lookfrom;
-	point3 lookat;
-	auto vfov = 40.0;
-	auto aperture = 0.0;
-	color background(0, 0, 0);
+	//point3 lookfrom;
+	//point3 lookat;
+	//auto vfov = 40.0;
+	//auto aperture = 0.0;
+	//color background(0, 0, 0);
 
-	switch (8) 
-	{
-	case 1:
-		world = random_scene();
-		background = color(0.70, 0.80, 1.00);
-		lookfrom = point3(13, 2, 3);
-		lookat = point3(0, 0, 0);
-		vfov = 20.0;
-		aperture = 0.1;
-		break;
+	//switch (8) 
+	//{
+	//case 1:
+	//	world = random_scene();
+	//	background = color(0.70, 0.80, 1.00);
+	//	lookfrom = point3(13, 2, 3);
+	//	lookat = point3(0, 0, 0);
+	//	vfov = 20.0;
+	//	aperture = 0.1;
+	//	break;
 
-	default:
-	case 2:
-		world = two_spheres();
-		background = color(0.70, 0.80, 1.00);
-		lookfrom = point3(13, 2, 3);
-		lookat = point3(0, 0, 0);
-		vfov = 20.0;
-		break;
-	case 3:
-		world = two_perlin_spheres();
-		background = color(0.70, 0.80, 1.00);
-		lookfrom = point3(13, 2, 3);
-		lookat = point3(0, 0, 0);
-		vfov = 20.0;
-		break;
-	case 4:
-		world = earth();
-		background = color(0.70, 0.80, 1.00);
-		lookfrom = point3(13, 2, 3);
-		lookat = point3(0, 0, 0);
-		vfov = 20.0;
-		break;
-	case 5:
-		world = simple_light();
-		samples_per_pixel = 400;
-		background = color(0, 0, 0);
-		lookfrom = point3(26, 3, 6);
-		lookat = point3(0, 2, 0);
-		vfov = 20.0;
-		break;
-	case 6:
-		world = cornell_box();
-		aspect_ratio = 1.0;
-		image_width = 600;
-		samples_per_pixel = 200;
-		background = color(0, 0, 0);
-		lookfrom = point3(278, 278, -800);
-		lookat = point3(278, 278, 0);
-		vfov = 40.0;
-		break;
-	case 7:
-		world = cornell_smoke();
-		aspect_ratio = 1.0;
-		image_width = 600;
-		samples_per_pixel = 200;
-		lookfrom = point3(278, 278, -800);
-		lookat = point3(278, 278, 0);
-		vfov = 40.0;
-		break;
-	case 8:
-		world = final_scene();
-		aspect_ratio = 1.0;
-		image_width = 800;
-		samples_per_pixel = 10000;
-		background = color(0, 0, 0);
-		lookfrom = point3(478, 278, -600);
-		lookat = point3(278, 278, 0);
-		vfov = 40.0;
-		break;
+	//default:
+	//case 2:
+	//	world = two_spheres();
+	//	background = color(0.70, 0.80, 1.00);
+	//	lookfrom = point3(13, 2, 3);
+	//	lookat = point3(0, 0, 0);
+	//	vfov = 20.0;
+	//	break;
+	//case 3:
+	//	world = two_perlin_spheres();
+	//	background = color(0.70, 0.80, 1.00);
+	//	lookfrom = point3(13, 2, 3);
+	//	lookat = point3(0, 0, 0);
+	//	vfov = 20.0;
+	//	break;
+	//case 4:
+	//	world = earth();
+	//	background = color(0.70, 0.80, 1.00);
+	//	lookfrom = point3(13, 2, 3);
+	//	lookat = point3(0, 0, 0);
+	//	vfov = 20.0;
+	//	break;
+	//case 5:
+	//	world = simple_light();
+	//	samples_per_pixel = 400;
+	//	background = color(0, 0, 0);
+	//	lookfrom = point3(26, 3, 6);
+	//	lookat = point3(0, 2, 0);
+	//	vfov = 20.0;
+	//	break;
+	//case 6:
+	//	world = cornell_box();
+	//	aspect_ratio = 1.0;
+	//	image_width = 600;
+	//	samples_per_pixel = 200;
+	//	background = color(0, 0, 0);
+	//	lookfrom = point3(278, 278, -800);
+	//	lookat = point3(278, 278, 0);
+	//	vfov = 40.0;
+	//	break;
+	//case 7:
+	//	world = cornell_smoke();
+	//	aspect_ratio = 1.0;
+	//	image_width = 600;
+	//	samples_per_pixel = 200;
+	//	lookfrom = point3(278, 278, -800);
+	//	lookat = point3(278, 278, 0);
+	//	vfov = 40.0;
+	//	break;
+	//case 8:
+	//	world = final_scene();
+	//	aspect_ratio = 1.0;
+	//	image_width = 800;
+	//	samples_per_pixel = 10000;
+	//	background = color(0, 0, 0);
+	//	lookfrom = point3(478, 278, -600);
+	//	lookat = point3(278, 278, 0);
+	//	vfov = 40.0;
+	//	break;
+	//}
+
+	//// Camera
+	//vec3 vup(0, 1, 0);
+	//auto dist_to_focus = 10.0;
+	//int image_height = static_cast<int>(image_width / aspect_ratio);
+
+	//camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
+
+	//// Render
+	//std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+
+	//for (int j = image_height - 1; j >= 0; --j) 
+	//{
+	//	std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
+	//	for (int i = 0; i < image_width; ++i) 
+	//	{
+	//		color pixel_color(0, 0, 0);
+	//		for (int s = 0; s < samples_per_pixel; ++s) 
+	//		{
+	//			auto u = (i + random_double()) / (image_width - 1);
+	//			auto v = (j + random_double()) / (image_height - 1);
+	//			ray r = cam.get_ray(u, v);
+	//			pixel_color += ray_color(r, background, world, max_depth);
+	//		}
+	//		write_color(std::cout, pixel_color, samples_per_pixel);
+	//	}
+	//}
+
+
+	// pi estimate, 2.1 
+	int inside_circle = 0;
+	int runs = 0;
+	std::cout << std::fixed << std::setprecision(12);
+	while (true) {
+		runs++;
+		auto x = random_double(-1, 1);
+		auto y = random_double(-1, 1);
+		if (x*x + y * y < 1)
+			inside_circle++;
+
+		if (runs % 100000 == 0)
+			std::cout << "Estimate of Pi = "
+			<< 4 * double(inside_circle) / runs
+			<< '\n';
 	}
 
-	// Camera
-	vec3 vup(0, 1, 0);
-	auto dist_to_focus = 10.0;
-	int image_height = static_cast<int>(image_width / aspect_ratio);
-
-	camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
-
-	// Render
-	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
-
-	for (int j = image_height - 1; j >= 0; --j) 
-	{
-		std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
-		for (int i = 0; i < image_width; ++i) 
-		{
-			color pixel_color(0, 0, 0);
-			for (int s = 0; s < samples_per_pixel; ++s) 
-			{
-				auto u = (i + random_double()) / (image_width - 1);
-				auto v = (j + random_double()) / (image_height - 1);
-				ray r = cam.get_ray(u, v);
-				pixel_color += ray_color(r, background, world, max_depth);
-			}
-			write_color(std::cout, pixel_color, samples_per_pixel);
-		}
-	}
 
 	std::cerr << "\nDone.\n";
 	
