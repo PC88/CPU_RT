@@ -432,12 +432,12 @@ int main()
 	//	}
 	//}
 
-
-	// pi estimate, 2.1 
+	// running estimate
 	int inside_circle = 0;
 	int runs = 0;
 	std::cout << std::fixed << std::setprecision(12);
-	while (true) {
+	while (true)
+	{
 		runs++;
 		auto x = random_double(-1, 1);
 		auto y = random_double(-1, 1);
@@ -449,7 +449,6 @@ int main()
 			<< 4 * double(inside_circle) / runs
 			<< '\n';
 	}
-
 
 	std::cerr << "\nDone.\n";
 	
