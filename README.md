@@ -237,3 +237,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image40.jpg)
+
+![6.12, hemisphereical sampling - with a subtle bug](images/image41.ppm)
+
+jpg version:
+
+![jpg-version](images/image41.jpg)
