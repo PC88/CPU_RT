@@ -65,7 +65,7 @@ color ray_color(const ray& r, const color& background, const hittable& world, in
 	if (!world.hit(r, 0.001, infinity, rec))
 	{
 		return background;
-	}
+	}//
 
 	ray scattered;
 	color attenuation;
