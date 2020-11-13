@@ -249,3 +249,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image42.jpg)
+
+![Cornell box, sampling only the light, 10 samples per pixel](images/image43.ppm)
+
+jpg version:
+
+![jpg-version](images/image43.jpg)
