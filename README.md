@@ -225,3 +225,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image38.jpg)
+
+![All lambertian materials 6.11: Part 1 ppm format](images/image39.ppm)
+
+jpg version:
+
+![jpg-version](images/image39.jpg)
