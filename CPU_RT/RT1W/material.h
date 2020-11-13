@@ -10,7 +10,17 @@ public:
 		return color(0, 0, 0);
 	}
 
-	virtual bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered) const = 0;
+	// re-factored 6.11
+	virtual bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered, double& pdf) const
+	{
+		return false;
+	}
+
+	// re-factored 6.11
+	virtual double scattering_pdf(const ray& r_in, const hit_record& rec, const ray& scattered) const 
+	{
+		return 0;
+	}
 };
 
 double schlick(double cosine, double ref_idx) 
@@ -27,7 +37,7 @@ public:
 	diffuse_light(color c) : emit(make_shared<solid_color>(c)) {}
 
 	virtual bool scatter(
-		const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+		const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered, double& pdf
 	) const override 
 	{
 		return false;
@@ -49,7 +59,7 @@ public:
 	isotropic(shared_ptr<texture> a) : albedo(a) {}
 
 	virtual bool scatter(
-		const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+		const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered, double& pdf
 	) const override 
 	{
 		scattered = ray(rec.p, random_in_unit_sphere(), r_in.time());

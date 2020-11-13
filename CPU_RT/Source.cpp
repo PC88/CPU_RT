@@ -68,17 +68,15 @@ color ray_color(const ray& r, const color& background, const hittable& world, in
 	ray scattered;
 	color attenuation;
 	color emitted = rec.mat_ptr->emitted(rec.u, rec.v, rec.p);
+	double pdf;
+	color albedo;
 
-	if (!rec.mat_ptr->scatter(r, rec, attenuation, scattered))
-	{
+	if (!rec.mat_ptr->scatter(r, rec, albedo, scattered, pdf))
 		return emitted;
-	}
 
-	return emitted + attenuation * ray_color(scattered, background, world, depth - 1);
-
-	vec3 unit_direction = unit_vector(r.direction());
-	auto t = 0.5*(unit_direction.y() + 1.0);
-	return (1.0 - t)*color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
+	return emitted
+		+ albedo * rec.mat_ptr->scattering_pdf(r, rec, scattered)
+		* ray_color(scattered, background, world, depth - 1) / pdf;
 }
 
 // cover image function
@@ -420,7 +418,7 @@ int main()
 	//}
 
 
-	//// Render
+	// Render
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
 	for (int j = image_height - 1; j >= 0; --j)

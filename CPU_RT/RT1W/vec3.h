@@ -67,6 +67,21 @@ public:
 		return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
 	}
 
+	// book excludes this function this one is a decent fix
+	bool near_zero()
+	{
+		if (e[0] < 0.1 &&  e[0] >= -0.1)
+		{
+			if (e[1] < 0.1 &&  e[1] >= -0.1)
+			{
+				if (e[2] < 0.1 &&  e[2] >= -0.1)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 public:
 	double e[3];
