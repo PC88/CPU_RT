@@ -273,3 +273,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image46.jpg)
+
+![Cornell box, mixture density of cosine and light sampling, 100 sampled per pixel, 10.23](images/image47.ppm)
+
+jpg version:
+
+![jpg-version](images/image47.jpg)
