@@ -17,7 +17,6 @@
 #include "RT1W/constant_medium.h"
 #include "RT1W/bvh.h"
 #include "RT1W/flip_face.h"
-#include "RT1W/pdf.h"
 #include <iomanip>
 
 /// This will be an evolving merge of my attempts to understand much of ray tracing by
@@ -51,7 +50,7 @@ double hit_sphere(const point3& center, double radius, const ray& r)
 }
 
 // depth is added here to stop the recursions from blowing the stack
-color ray_color(const ray& r, const color& background, const hittable& world, shared_ptr<hittable>& lights, int depth)
+color ray_color(const ray& r, const color& background, const hittable& world, int depth)
 {
 	hit_record rec;
 
@@ -69,19 +68,32 @@ color ray_color(const ray& r, const color& background, const hittable& world, sh
 
 	ray scattered;
 	color attenuation;
-	color emitted = rec.mat_ptr->emitted(r, rec, rec.u, rec.v, rec.p); // changed to take r
-	double pdf_val;
+	color emitted = rec.mat_ptr->emitted(scattered, rec, rec.u, rec.v, rec.p);
+	double pdf;
 	color albedo;
 
-	if (!rec.mat_ptr->scatter(r, rec, albedo, scattered, pdf_val))
+	if (!rec.mat_ptr->scatter(r, rec, albedo, scattered, pdf))
 		return emitted;
-	hittable_pdf light_pdf(lights, rec.p);
-	scattered = ray(rec.p, light_pdf.generate(), r.time());
-	pdf_val = light_pdf.value(scattered.direction());
+
+	auto on_light = point3(random_double(213, 343), 554, random_double(227, 332));
+	auto to_light = on_light - rec.p;
+	auto distance_squared = to_light.length_squared();
+	to_light = unit_vector(to_light);
+
+	if (dot(to_light, rec.normal) < 0)
+		return emitted;
+
+	double light_area = (343 - 213)*(332 - 227);
+	auto light_cosine = fabs(to_light.y());
+	if (light_cosine < 0.000001)
+		return emitted;
+
+	pdf = distance_squared / (light_cosine * light_area);
+	scattered = ray(rec.p, to_light, r.time());
 
 	return emitted
 		+ albedo * rec.mat_ptr->scattering_pdf(r, rec, scattered)
-		* ray_color(scattered, background, world, lights, depth - 1) / pdf_val;
+		* ray_color(scattered, background, world, depth - 1) / pdf;
 }
 
 // cover image function
@@ -338,8 +350,6 @@ int main()
 	// World
 
 	auto world = cornell_box();
-	shared_ptr<hittable> lights =
-		make_shared<xz_rect>(213, 343, 227, 332, 554, shared_ptr<material>());
 
 	color background(0, 0, 0);
 
@@ -442,7 +452,7 @@ int main()
 				auto u = (i + random_double()) / (image_width - 1);
 				auto v = (j + random_double()) / (image_height - 1);
 				ray r = cam.get_ray(u, v);
-				pixel_color += ray_color(r, background, world, lights, max_depth);
+				pixel_color += ray_color(r, background, world, max_depth);
 			}
 			write_color(std::cout, pixel_color, samples_per_pixel);
 		}
