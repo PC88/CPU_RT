@@ -267,3 +267,15 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image45.jpg)
+
+![Cornell box, sampling a hittable light, 10 samples per pixel 10.22](images/image46.ppm)
+
+jpg version:
+
+![jpg-version](images/image46.jpg)
+
+![Cornell box, mixture density of cosine and light sampling, 100 sampled per pixel, 10.23](images/image47.ppm)
+
+jpg version:
+
+![jpg-version](images/image47.jpg)
