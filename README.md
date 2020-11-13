@@ -261,3 +261,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image44.jpg)
+
+![Cornell box with a cosine density 10.21](images/image45.ppm)
+
+jpg version:
+
+![jpg-version](images/image45.jpg)
