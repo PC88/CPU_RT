@@ -314,9 +314,9 @@ hittable_list final_scene()
 	return objects;
 }
 
-inline double pdf(double x) 
+inline double pdf(const vec3& p) 
 {
-	return 3 * x*x / 8;
+	return 1 / (4 * pi);
 }
 
 int main()
@@ -437,15 +437,17 @@ int main()
 	//	}
 	//}
 
-	int N = 1;
-	auto sum = 0.0;
+	int N = 1000000;
+	auto sum = 0.0; 
 	for (int i = 0; i < N; i++) 
 	{
-		auto x = pow(random_double(0, 8), 1.0 / 3.0);
-		sum += x * x / pdf(x);
+		vec3 d = random_unit_vector();
+		auto cosine_squared = d.z()*d.z();
+		sum += cosine_squared / pdf(d);
 	}
+
 	std::cout << std::fixed << std::setprecision(12);
-	std::cout << "I = " << 2 * sum / N << '\n';
+	std::cout << "I = " << sum / N << '\n';
 	std::cin.get();
 	return 0;
 }
