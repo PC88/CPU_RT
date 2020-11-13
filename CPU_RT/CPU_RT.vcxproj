@@ -118,6 +118,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RT1W\flip_face.h" />
     <ClInclude Include="RT1W\onb.h" />
     <ClInclude Include="RT1W\constant_medium.h" />
     <ClInclude Include="RT1W\box.h" />

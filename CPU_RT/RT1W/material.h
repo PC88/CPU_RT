@@ -5,7 +5,8 @@ class material
 {
 public:
 	// not pure virtual: non enforced interface
-	virtual color emitted(double u, double v, const point3& p) const 
+	virtual color emitted(const ray& r_in, const hit_record& rec, double u, double v,
+		const point3& p) const
 	{
 		return color(0, 0, 0);
 	}
@@ -43,9 +44,13 @@ public:
 		return false;
 	}
 
-	virtual color emitted(double u, double v, const point3& p) const override 
+	virtual color emitted(const ray& r_in, const hit_record& rec, double u, double v,
+		const point3& p) const override
 	{
-		return emit->value(u, v, p);
+		if (rec.front_face)
+			return emit->value(u, v, p);
+		else
+			return color(0, 0, 0);
 	}
 
 public:
