@@ -437,6 +437,7 @@ int main()
 	//	}
 	//}
 
+	// SECTIONS 5 Light scatterning
 	int N = 1000000;
 	auto sum = 0.0; 
 	for (int i = 0; i < N; i++) 
