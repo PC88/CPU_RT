@@ -255,3 +255,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image43.jpg)
+
+![Cornell box, with only downward lighting- 9.20](images/image44.ppm)
+
+jpg version:
+
+![jpg-version](images/image44.jpg)
