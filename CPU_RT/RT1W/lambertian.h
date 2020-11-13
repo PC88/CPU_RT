@@ -1,6 +1,7 @@
 #pragma once
 #include "RT1W/material.h"
 #include "RT1W/texture.h"
+#include "RT1W/onb.h"
 
 struct hit_record;
 
@@ -12,10 +13,12 @@ public:
 
 	virtual bool scatter(const ray& r_in, const hit_record& rec, color& alb, ray& scattered, double& pdf) const override 
 	{
-		auto direction = random_in_hemisphere(rec.normal);
+		onb uvw;
+		uvw.build_from_w(rec.normal);
+		auto direction = uvw.local(random_cosine_direction());
 		scattered = ray(rec.p, unit_vector(direction), r_in.time());
 		alb = albedo->value(rec.u, rec.v, rec.p);
-		pdf = 0.5 / pi;
+		pdf = dot(uvw.w(), scattered.direction()) / pi;
 		return true;
 	}
 

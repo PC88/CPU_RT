@@ -312,18 +312,7 @@ hittable_list final_scene()
 	return objects;
 }
 
-inline vec3 random_cosine_direction() 
-{
-	auto r1 = random_double();
-	auto r2 = random_double();
-	auto z = sqrt(1 - r2);
 
-	auto phi = 2 * pi*r1;
-	auto x = cos(phi)*sqrt(r2);
-	auto y = sin(phi)*sqrt(r2);
-
-	return vec3(x, y, z);
-}
 
 inline double pdf(const vec3& p) 
 {
@@ -334,31 +323,31 @@ int main()
 {
 	// Image
 	
-	//const auto aspect_ratio = 1.0 / 1.0;
-	//const int image_width = 600;
-	//const int image_height = static_cast<int>(image_width / aspect_ratio);
-	//const int samples_per_pixel = 100;
-	//const int max_depth = 50;
+	const auto aspect_ratio = 1.0 / 1.0;
+	const int image_width = 600;
+	const int image_height = static_cast<int>(image_width / aspect_ratio);
+	const int samples_per_pixel = 100;
+	const int max_depth = 50;
 
-	//// World
+	// World
 
-	//auto world = cornell_box();
+	auto world = cornell_box();
 
-	//color background(0, 0, 0);
+	color background(0, 0, 0);
 
-	//// Camera
-	//point3 lookfrom(278, 278, -800);
-	//point3 lookat(278, 278, 0);
-	//vec3 vup(0, 1, 0);
-	//auto dist_to_focus = 10.0;
-	//auto aperture = 0.0;
-	//auto vfov = 40.0;
-	//auto time0 = 0.0;
-	//auto time1 = 1.0;
+	// Camera
+	point3 lookfrom(278, 278, -800);
+	point3 lookat(278, 278, 0);
+	vec3 vup(0, 1, 0);
+	auto dist_to_focus = 10.0;
+	auto aperture = 0.0;
+	auto vfov = 40.0;
+	auto time0 = 0.0;
+	auto time1 = 1.0;
 
-	//camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, time0, time1);
+	camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, time0, time1);
 
-	//switch (8) 
+	//switch (8)
 	//{
 	//case 1:
 	//	world = random_scene();
@@ -368,7 +357,7 @@ int main()
 	//	vfov = 20.0;
 	//	aperture = 0.1;
 	//	break;
-
+	//
 	//default:
 	//case 2:
 	//	world = two_spheres();
@@ -432,7 +421,7 @@ int main()
 
 
 	// Render
-	/*std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
 	for (int j = image_height - 1; j >= 0; --j)
 	{
@@ -449,21 +438,7 @@ int main()
 			}
 			write_color(std::cout, pixel_color, samples_per_pixel);
 		}
-	}*/
-
-	int N = 1000000;
-
-	auto sum = 0.0;
-	for (int i = 0; i < N; i++) 
-	{
-		auto v = random_cosine_direction();
-		sum += v.z()*v.z()*v.z() / (v.z() / pi);
 	}
-
-	std::cout << std::fixed << std::setprecision(12);
-	std::cout << "Pi/2     = " << pi / 2 << '\n';
-	std::cout << "Estimate = " << sum / N << '\n';
-	std::cin.get();
 
 
 	return 0;
