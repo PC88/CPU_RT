@@ -231,3 +231,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image39.jpg)
+
+![All lambertian materials with importance sampling 6.11: Part 2 ppm format](images/image40.ppm)
+
+jpg version:
+
+![jpg-version](images/image40.jpg)
