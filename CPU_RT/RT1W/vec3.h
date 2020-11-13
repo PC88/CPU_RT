@@ -213,6 +213,7 @@ inline vec3 random_cosine_direction()
 	return vec3(x, y, z);
 }
 
+
 // Type aliases for vec3
 using point3 = vec3;   // 3D point
 using color = vec3;    // RGB 

@@ -92,5 +92,8 @@
     <ClInclude Include="RT1W\flip_face.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RT1W\pdf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
