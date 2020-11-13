@@ -243,3 +243,9 @@ jpg version:
 jpg version:
 
 ![jpg-version](images/image41.jpg)
+
+![Cornell box with orthonormal sampling - potentially with a subtle bug](images/image42.ppm)
+
+jpg version:
+
+![jpg-version](images/image42.jpg)
