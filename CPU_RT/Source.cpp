@@ -187,6 +187,7 @@ hittable_list simple_light()
 	return objects;
 }
 
+// refactored - 6.11
 hittable_list cornell_box() 
 {
 	hittable_list objects;
@@ -199,11 +200,10 @@ hittable_list cornell_box()
 	objects.add(make_shared<yz_rect>(0, 555, 0, 555, 555, green));
 	objects.add(make_shared<yz_rect>(0, 555, 0, 555, 0, red));
 	objects.add(make_shared<xz_rect>(213, 343, 227, 332, 554, light));
-	objects.add(make_shared<xz_rect>(0, 555, 0, 555, 0, white));
 	objects.add(make_shared<xz_rect>(0, 555, 0, 555, 555, white));
+	objects.add(make_shared<xz_rect>(0, 555, 0, 555, 0, white));
 	objects.add(make_shared<xy_rect>(0, 555, 0, 555, 555, white));
 
-	// boxes
 	shared_ptr<hittable> box1 = make_shared<box>(point3(0, 0, 0), point3(165, 330, 165), white);
 	box1 = make_shared<rotate_y>(box1, 15);
 	box1 = make_shared<translate>(box1, vec3(265, 0, 295));
@@ -323,20 +323,29 @@ int main()
 {
 	// Image
 	
-	//auto aspect_ratio = 16.0 / 9.0;
-	//int image_width = 400;
-	//int samples_per_pixel = 100;
-	//const int max_depth = 50;
+	const auto aspect_ratio = 1.0 / 1.0;
+	const int image_width = 600;
+	const int image_height = static_cast<int>(image_width / aspect_ratio);
+	const int samples_per_pixel = 100;
+	const int max_depth = 50;
 
-	//// World
+	// World
 
-	//hittable_list world;
+	auto world = cornell_box();
 
-	//point3 lookfrom;
-	//point3 lookat;
-	//auto vfov = 40.0;
-	//auto aperture = 0.0;
-	//color background(0, 0, 0);
+	color background(0, 0, 0);
+
+	// Camera
+	point3 lookfrom(278, 278, -800);
+	point3 lookat(278, 278, 0);
+	vec3 vup(0, 1, 0);
+	auto dist_to_focus = 10.0;
+	auto aperture = 0.0;
+	auto vfov = 40.0;
+	auto time0 = 0.0;
+	auto time1 = 1.0;
+
+	camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, time0, time1);
 
 	//switch (8) 
 	//{
@@ -410,45 +419,26 @@ int main()
 	//	break;
 	//}
 
-	//// Camera
-	//vec3 vup(0, 1, 0);
-	//auto dist_to_focus = 10.0;
-	//int image_height = static_cast<int>(image_width / aspect_ratio);
-
-	//camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
 
 	//// Render
-	//std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-	//for (int j = image_height - 1; j >= 0; --j) 
-	//{
-	//	std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
-	//	for (int i = 0; i < image_width; ++i) 
-	//	{
-	//		color pixel_color(0, 0, 0);
-	//		for (int s = 0; s < samples_per_pixel; ++s) 
-	//		{
-	//			auto u = (i + random_double()) / (image_width - 1);
-	//			auto v = (j + random_double()) / (image_height - 1);
-	//			ray r = cam.get_ray(u, v);
-	//			pixel_color += ray_color(r, background, world, max_depth);
-	//		}
-	//		write_color(std::cout, pixel_color, samples_per_pixel);
-	//	}
-	//}
-
-	// SECTIONS 5 Light scatterning
-	int N = 1000000;
-	auto sum = 0.0; 
-	for (int i = 0; i < N; i++) 
+	for (int j = image_height - 1; j >= 0; --j)
 	{
-		vec3 d = random_unit_vector();
-		auto cosine_squared = d.z()*d.z();
-		sum += cosine_squared / pdf(d);
+		std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
+		for (int i = 0; i < image_width; ++i)
+		{
+			color pixel_color(0, 0, 0);
+			for (int s = 0; s < samples_per_pixel; ++s)
+			{
+				auto u = (i + random_double()) / (image_width - 1);
+				auto v = (j + random_double()) / (image_height - 1);
+				ray r = cam.get_ray(u, v);
+				pixel_color += ray_color(r, background, world, max_depth);
+			}
+			write_color(std::cout, pixel_color, samples_per_pixel);
+		}
 	}
 
-	std::cout << std::fixed << std::setprecision(12);
-	std::cout << "I = " << sum / N << '\n';
-	std::cin.get();
 	return 0;
 }
