@@ -75,9 +75,13 @@ color ray_color(const ray& r, const color& background, const hittable& world, sh
 
 	if (!rec.mat_ptr->scatter(r, rec, albedo, scattered, pdf_val))
 		return emitted;
-	hittable_pdf light_pdf(lights, rec.p);
-	scattered = ray(rec.p, light_pdf.generate(), r.time());
-	pdf_val = light_pdf.value(scattered.direction());
+
+	auto p0 = make_shared<hittable_pdf>(lights, rec.p);
+	auto p1 = make_shared<cosine_pdf>(rec.normal);
+	mixture_pdf mixed_pdf(p0, p1);
+
+	scattered = ray(rec.p, mixed_pdf.generate(), r.time());
+	pdf_val = mixed_pdf.value(scattered.direction());
 
 	return emitted
 		+ albedo * rec.mat_ptr->scattering_pdf(r, rec, scattered)
