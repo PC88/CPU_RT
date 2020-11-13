@@ -11,14 +11,11 @@ public:
 	lambertian(const color& a) : albedo(make_shared<solid_color>(a)) {}
 	lambertian(shared_ptr<texture> a) : albedo(a) {}
 
-	virtual bool scatter(const ray& r_in, const hit_record& rec, color& alb, ray& scattered, double& pdf) const override 
+	virtual bool scatter(const ray& r_in, const hit_record& rec, scatter_record& srec) const override 
 	{
-		onb uvw;
-		uvw.build_from_w(rec.normal);
-		auto direction = uvw.local(random_cosine_direction());
-		scattered = ray(rec.p, unit_vector(direction), r_in.time());
-		alb = albedo->value(rec.u, rec.v, rec.p);
-		pdf = dot(uvw.w(), scattered.direction()) / pi;
+		srec.is_specular = false;
+		srec.attenuation = albedo->value(rec.u, rec.v, rec.p);
+		srec.pdf_ptr = std::make_shared<cosine_pdf>(rec.normal);
 		return true;
 	}
 

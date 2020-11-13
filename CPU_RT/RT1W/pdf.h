@@ -1,6 +1,7 @@
 #pragma once
 #include "RT1W/vec3.h"
 #include "RT1W/hittable.h"
+#include "RT1W/onb.h"
 
 class pdf 
 {
