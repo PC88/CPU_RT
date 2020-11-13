@@ -51,7 +51,7 @@ double hit_sphere(const point3& center, double radius, const ray& r)
 }
 
 // depth is added here to stop the recursions from blowing the stack
-color ray_color(const ray& r, const color& background, const hittable& world, int depth)
+color ray_color(const ray& r, const color& background, const hittable& world, shared_ptr<hittable>& lights, int depth)
 {
 	hit_record rec;
 
@@ -75,14 +75,13 @@ color ray_color(const ray& r, const color& background, const hittable& world, in
 
 	if (!rec.mat_ptr->scatter(r, rec, albedo, scattered, pdf_val))
 		return emitted;
-
-	cosine_pdf p(rec.normal);
-	scattered = ray(rec.p, p.generate(), r.time());
-	pdf_val = p.value(scattered.direction());
+	hittable_pdf light_pdf(lights, rec.p);
+	scattered = ray(rec.p, light_pdf.generate(), r.time());
+	pdf_val = light_pdf.value(scattered.direction());
 
 	return emitted
 		+ albedo * rec.mat_ptr->scattering_pdf(r, rec, scattered)
-		* ray_color(scattered, background, world, depth - 1) / pdf_val;
+		* ray_color(scattered, background, world, lights, depth - 1) / pdf_val;
 }
 
 // cover image function
@@ -339,6 +338,8 @@ int main()
 	// World
 
 	auto world = cornell_box();
+	shared_ptr<hittable> lights =
+		make_shared<xz_rect>(213, 343, 227, 332, 554, shared_ptr<material>());
 
 	color background(0, 0, 0);
 
@@ -441,7 +442,7 @@ int main()
 				auto u = (i + random_double()) / (image_width - 1);
 				auto v = (j + random_double()) / (image_height - 1);
 				ray r = cam.get_ray(u, v);
-				pixel_color += ray_color(r, background, world, max_depth);
+				pixel_color += ray_color(r, background, world, lights, max_depth);
 			}
 			write_color(std::cout, pixel_color, samples_per_pixel);
 		}
